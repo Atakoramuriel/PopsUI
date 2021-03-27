@@ -1,40 +1,61 @@
 <template>
     <div id="register">
-        <h2 class=white-text>Register Page</h2>
+      
+
+      
+
+
         <!-- Start with the inputs -->
+        <div class="row" id="A"></div>
+
 <center> 
-<div id="registerCard">
-    <div class="row container">
-        <div class="input-field col s12" id="inputTxt">
-          <input id="email" type="email" class="validate" v-model="email">
-          <label for="email" class=black-text>Email</label>
+    <div class="row" id="AQUI">
+        <center>
+            <img src="../assets/WebImages/favicon.png" class="show-on-medium" id="popsIcon" alt="">
+        </center>
+    </div>
+    <div class="row " id="registerSection">
+        <div class="col s12 m6 l6 offset-m3 offset-l3">
+            <div id="registerCard" class="z-depth-5">
+                <center>
+    <h2 class=white-text>Create Account</h2>
+                <div class="row container">
+                    <div class="input-field col s12" id="inputTxt">
+                    <input id="email" type="email" class="validate" v-model="email">
+                    <label for="email" class=black-text>Email</label>
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="input-field col s12" id="inputTxt">
+                    <input id="password" type="password" class="validate" v-model="password">
+                    <label for="password" class="black-text">Password</label>
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="input-field col s12" id="inputTxt">
+                    <input id="password" type="password" class="validate" v-model="ConfirmPassword">
+                    <label for="password" class="black-text">Confirm Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn-large grey darken-4 waves" v-on:click="createUser"><b>Submit</b></button>
+                </div>
+                <router-link to="/login">
+                    <a href="#">Already have an account? Click to Login</a>
+                </router-link>
+                </center>
+            
+            </div>
         </div>
     </div>
-    <div class="row container">
-        <div class="input-field col s12" id="inputTxt">
-          <input id="password" type="password" class="validate" v-model="password">
-          <label for="password" class="black-text">Password</label>
-        </div>
-    </div>
-      <div class="row container">
-        <div class="input-field col s12" id="inputTxt">
-          <input id="password" type="password" class="validate" v-model="ConfirmPassword">
-          <label for="password" class="black-text">Confirm Password</label>
-        </div>
-    </div>
-    <div class="row">
-        <button class="btn-large red darken-4 waves" v-on:click="createUser"><b>Create Account</b></button>
-    </div>
-</div>
+
 
 
 <!-- This is the footer for forgetting the password -->
 
 <div class="row" style="">
     <br><br>
-    <router-link to="/login">
-        <a href="#">Already have an account? Click to Login</a>
-    </router-link>
+  
  
 </div>
 
@@ -44,9 +65,44 @@
 </template>
 
 <style>
+#AQUI{
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    z-index: 4;
+}
+
+#popsIcon{
+    background: black;
+    border: solid red 0px;
+    border-radius: 20px;
+    padding: 2%;
+    z-index: 2;
+    top: 8%;
+    width: 7%;
+
+}
+#A{
+    background: linear-gradient(to bottom, black, rgb(56, 18, 18), black);
+    padding: 5%;
+    z-index: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+}
+
+#registerSection{
+    position: absolute;
+    top: 15%;
+    width: 100%;
+}
+
 #registerCard{
-    width: 75%;
     text-align: center;
+    background: linear-gradient(to bottom right, rgb(43, 7, 7), black, rgb(43, 7, 7));
+    padding: 2%;
+    border-radius: 30px;
  
 }
 

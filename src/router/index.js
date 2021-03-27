@@ -5,10 +5,11 @@ import Welcome from '@/components/Welcome'
 import Admin from '@/components/Admin'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
+import firebase from 'firebase'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: '/',
@@ -23,7 +24,10 @@ export default new Router({
     {
       path: '/Login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: {
+        auth: true
+      }
     },
     {
       path: '/Register',
@@ -31,4 +35,26 @@ export default new Router({
       component: Register
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  var user = firebase.auth().currentUser
+  if(to.matched.some(record => record.meta.auth)){
+    if(!user){
+      //not logged in redirect
+      next({
+        path: '/login', //where to redirect if not logged in
+        query: {
+          redirect: to.fullPath //direct user to full login page
+        }
+      });
+  }else{
+    next();
+  }
+  }else{
+    next();
+  }
+  
+});
+
+export default router;
